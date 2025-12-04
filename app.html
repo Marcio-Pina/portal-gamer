@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -35,11 +36,12 @@
             font-size: 1.8em;
         }
 
+        /* CORREÇÃO DO ESPAÇAMENTO: Aumentado o margin e padding */
         .navbar nav a {
             color: #00FFFF;
             text-decoration: none;
-            margin-left: 20px;
-            padding: 8px 12px;
+            margin-left: 25px; /* Aumentamos o espaçamento lateral */
+            padding: 10px 15px; /* Aumentamos o padding */
             transition: color 0.3s, text-shadow 0.3s;
             text-transform: uppercase;
         }
@@ -51,7 +53,7 @@
         
         /* Estilo específico para o link do Instagram na Navbar */
         .navbar nav a.instagram-link {
-            color: #FF4500; /* Laranja para destaque */
+            color: #FF4500;
         }
         .navbar nav a.instagram-link:hover {
              text-shadow: 0 0 10px #FF4500;
@@ -294,7 +296,7 @@
         /* Estilos do Footer */
         footer {
              text-align: center; 
-             padding: 20px; /* Aumentado para melhor visualização dos links */
+             padding: 20px; 
              background-color: #1A1A1A; 
              margin-top: 40px;
              border-top: 3px solid #FF4500;
@@ -303,7 +305,7 @@
         footer a {
             color: #00FFFF;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px; /* Aumentamos o espaçamento no footer também */
             transition: color 0.3s;
         }
         footer a:hover {
@@ -321,7 +323,7 @@
             <a href="#home">Início</a>
             <a href="#games">Arquivos</a>
             <a href="#quiz">Quiz Interativo</a>
-            <a href="https://www.instagram.com/portal_gamer._?igsh=YTYwd2o2djFuaHhw&utm_source=qr" target="_blank" class="instagram-link">Instagram</a>
+            <a href="https://www.instagram.com/seuperfil/" target="_blank" class="instagram-link">Instagram</a>
             <a href="https://chat.whatsapp.com/B9srl3fqYhE21KbXJoSDOY" target="_blank" class="button-glow">Comunidade</a>
         </nav>
     </header>
@@ -427,7 +429,7 @@
     <footer>
         <p>&copy; 2025 Portal Gamer. Todos os direitos reservados.</p>
         <p>
-            <a href="https://www.instagram.com/portal_gamer._?igsh=YTYwd2o2djFuaHhw&utm_source=qr" target="_blank">Instagram</a> | 
+            <a href="https://www.instagram.com/seuperfil/" target="_blank">Instagram</a> | 
             <a href="https://chat.whatsapp.com/B9srl3fqYhE21KbXJoSDOY" target="_blank">Comunidade WhatsApp</a>
         </p>
     </footer>
@@ -498,9 +500,8 @@
             });
         }
         
-        // --- Lógica do Modal de Dicas (Nova) ---
+        // --- Lógica do Modal de Dicas (Mantida) ---
 
-        // Dicionário com as dicas detalhadas pesquisadas
         const detailedTips = {
             'Free Fire': {
                 title: '🔫 Dicas Avançadas para o BOOYAH!',
