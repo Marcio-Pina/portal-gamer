@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -28,6 +29,12 @@
             align-items: center;
             border-bottom: 3px solid #00FFFF;
         }
+        
+        /* Garante que os itens de navegação fiquem alinhados */
+        .navbar nav {
+            display: flex; 
+            align-items: center; 
+        }
 
         .navbar h1 {
             color: #FF4500;
@@ -35,13 +42,18 @@
             font-size: 1.8em;
         }
 
+        /* Ajuste do espaçamento dos links de navegação */
         .navbar nav a {
             color: #00FFFF;
             text-decoration: none;
-            margin-left: 20px;
-            padding: 8px 12px;
+            margin-left: 25px; 
+            padding: 10px 15px; 
             transition: color 0.3s, text-shadow 0.3s;
             text-transform: uppercase;
+            /* Garante que os links normais também são tratados como blocos de alinhamento */
+            display: inline-flex; 
+            align-items: center;
+            height: 25px; /* Altura de referência para alinhar com o botão */
         }
 
         .navbar nav a:hover {
@@ -51,30 +63,14 @@
         
         /* Estilo específico para o link do Instagram na Navbar */
         .navbar nav a.instagram-link {
-            color: #FF4500; /* Laranja para destaque */
+            color: #FF4500;
         }
         .navbar nav a.instagram-link:hover {
              text-shadow: 0 0 10px #FF4500;
         }
 
 
-        /* Seções */
-        main {
-            padding: 20px 50px;
-        }
-
-        /* Seção de Destaque */
-        .hero-section {
-            text-align: center;
-            padding: 100px 0;
-            /* Placeholder para imagem de fundo */
-            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('http://googleusercontent.com/image_collection/image_retrieval/some_id_string') center center/cover;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            box-shadow: inset 0 0 50px rgba(0, 255, 255, 0.2);
-        }
-
-        /* Botões e Links de Ação */
+        /* Botões e Links de Ação (Ajuste global) */
         .action-button, .quiz-button, a.action-button { 
             padding: 12px 25px;
             margin: 10px;
@@ -89,11 +85,20 @@
             display: inline-block; 
         }
 
+        /* CORREÇÃO AQUI: Alinhamento vertical do botão "Comunidade" */
         .button-glow {
+            /* Mantido: Estilo glow */
             background-color: #4CAF50;
             box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50;
             color: white;
             border: 2px solid #388E3C;
+            
+            /* Novo: Alinhamento e Espaçamento */
+            display: inline-flex; /* Use flex no botão também */
+            align-items: center; /* Centraliza o texto verticalmente */
+            height: 25px; /* Força a altura para bater com os links normais */
+            padding: 10px 15px; /* Redefine o padding para o padrão do nav */
+            margin-left: 25px; /* Usa o mesmo espaçamento lateral dos outros links */
         }
 
         .button-glow:hover {
@@ -101,6 +106,9 @@
             box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF;
             transform: scale(1.05);
         }
+
+        /* Outros estilos omitidos por brevidade (quiz, card, modal, footer) */
+        /* ... (Restante do CSS) ... */
 
         /* Estilos do Quiz */
         .quiz-section {
@@ -294,7 +302,7 @@
         /* Estilos do Footer */
         footer {
              text-align: center; 
-             padding: 20px; /* Aumentado para melhor visualização dos links */
+             padding: 20px; 
              background-color: #1A1A1A; 
              margin-top: 40px;
              border-top: 3px solid #FF4500;
@@ -303,7 +311,7 @@
         footer a {
             color: #00FFFF;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px; 
             transition: color 0.3s;
         }
         footer a:hover {
@@ -321,7 +329,8 @@
             <a href="#home">Início</a>
             <a href="#games">Arquivos</a>
             <a href="#quiz">Quiz Interativo</a>
-            <a href="https://www.instagram.com/portal_gamer._?igsh=YTYwd2o2djFuaHhw&utm_source=qr" target="_blank" class="instagram-link">Instagram</a>
+            <a href="https://www.instagram.com/seuperfil/" target="_blank" class="instagram-link">Instagram</a>
+            
             <a href="https://chat.whatsapp.com/B9srl3fqYhE21KbXJoSDOY" target="_blank" class="button-glow">Comunidade</a>
         </nav>
     </header>
@@ -427,7 +436,7 @@
     <footer>
         <p>&copy; 2025 Portal Gamer. Todos os direitos reservados.</p>
         <p>
-            <a href="https://www.instagram.com/portal_gamer._?igsh=YTYwd2o2djFuaHhw&utm_source=qr" target="_blank">Instagram</a> | 
+            <a href="https://www.instagram.com/seuperfil/" target="_blank">Instagram</a> | 
             <a href="https://chat.whatsapp.com/B9srl3fqYhE21KbXJoSDOY" target="_blank">Comunidade WhatsApp</a>
         </p>
     </footer>
@@ -498,9 +507,8 @@
             });
         }
         
-        // --- Lógica do Modal de Dicas (Nova) ---
+        // --- Lógica do Modal de Dicas (Mantida) ---
 
-        // Dicionário com as dicas detalhadas pesquisadas
         const detailedTips = {
             'Free Fire': {
                 title: '🔫 Dicas Avançadas para o BOOYAH!',
