@@ -184,6 +184,26 @@
             font-size: 0.8em;
         }
 
+        /* NOVO: Estilo para a Imagem do Jogo */
+        .game-image-container {
+            margin-bottom: 15px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+        
+        .game-card-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .game-card-img:hover {
+            transform: scale(1.03);
+        }
+
         /* Botão Secundário para Dicas (Laranja) */
         .tip-button {
             display: block; 
@@ -310,12 +330,39 @@
         footer a:hover {
             color: #FFD700;
         }
+        
+        /* NOVO: Estilo para o Botão de Controle de Áudio */
+        #audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 101; /* Ficar acima de tudo */
+            background-color: #00FFFF;
+            color: #121212;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00FFFF, 0 0 5px #121212;
+            transition: background-color 0.3s, transform 0.3s;
+        }
 
+        #audio-control:hover {
+            background-color: #FFFFFF;
+            transform: scale(1.1);
+        }
 
         /* style.css - FIM */
     </style>
 </head>
 <body>
+    
+    <audio id="background-music" loop>
+    <source src="fundo.mp3" type="audio/mpeg"> 
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
     <header class="navbar">
         <h1>PORTAL **GAMER**</h1>
         <nav>
@@ -339,6 +386,9 @@
             <div class="game-grid">
                 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="freefire.jpeg" alt="Arte de Free Fire" class="game-card-img">
+                    </div>
                     <h4>Free Fire</h4>
                     <span class="genre">Battle Royale / Mobile</span>
                     <p>Famoso jogo de Battle Royale para celular. O objetivo é ser o último a permanecer vivo (BOOYAH!).</p>
@@ -347,6 +397,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="valorant.jpg" alt="Arte de Valorant" class="game-card-img">
+                    </div>
                     <h4>Valorant</h4>
                     <span class="genre">Tiro Tático / PC</span>
                     <p>Shooter tático 5v5 da Riot Games que combina tiro preciso com habilidades únicas dos "Agentes".</p>
@@ -355,6 +408,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="callofdute.webp" alt="Arte de Call of Duty" class="game-card-img">
+                    </div>
                     <h4>Call of Duty (CoD)</h4>
                     <span class="genre">FPS / Múltiplas Plataformas</span>
                     <p>Franquia lendária de tiro em primeira pessoa, incluindo o modo Battle Royale (Warzone).</p>
@@ -363,6 +419,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="clashR.avif" alt="Arte de Clash Royale" class="game-card-img">
+                    </div>
                     <h4>Clash Royale</h4>
                     <span class="genre">Estratégia / Mobile</span>
                     <p>Jogo de cartas colecionáveis e estratégia em tempo real. O objetivo é destruir a Torre do Rei.</p>
@@ -371,6 +430,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="brawls.webp" alt="Arte de Brawl Stars" class="game-card-img">
+                    </div>
                     <h4>Brawl Stars</h4>
                     <span class="genre">Ação Arcade / Mobile</span>
                     <p>Jogo de arena multiplayer com vários modos de jogo. Escolha seu "Brawler" e lute em 3v3 ou solo.</p>
@@ -379,6 +441,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="efootball.jpg" alt="Arte de eFootball" class="game-card-img">
+                    </div>
                     <h4>eFootball</h4>
                     <span class="genre">Futebol / Simulação</span>
                     <p>O simulador de futebol da Konami (antigo Pro Evolution Soccer). Gratuito para jogar e focado em realismo.</p>
@@ -387,6 +452,9 @@
                 </div>
 
                 <div class="game-card">
+                    <div class="game-image-container">
+                        <img src="FIFA.avif" alt="Arte de FC Mobile" class="game-card-img">
+                    </div>
                     <h4>FC Mobile / EA Sports FC</h4>
                     <span class="genre">Futebol / Ultimate Team</span>
                     <p>Sucessor do FIFA, focado no modo Ultimate Team. Colecione cartas e monte seu time dos sonhos.</p>
@@ -438,7 +506,7 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <h3 id="modalTitle"></h3>
             <div id="modalContent">
-                </div>
+            </div>
         </div>
     </div>
 
@@ -499,7 +567,7 @@
             });
         }
         
-        // --- Lógica do Modal de Dicas (Nova) ---
+        // --- Lógica do Modal de Dicas (Mantida) ---
 
         // Dicionário com as dicas detalhadas pesquisadas
         const detailedTips = {
@@ -609,7 +677,44 @@
                 modal.style.display = 'none';
             }
         }
+        
+        // --- NOVO: Lógica de Controle de Áudio ---
+        function setupAudioControl() {
+            const audio = document.getElementById('background-music');
+            const controlButton = document.getElementById('audio-control');
+            let isPlaying = false; 
+
+            function togglePlay() {
+                if (isPlaying) {
+                    audio.pause();
+                    controlButton.innerHTML = '🔇'; 
+                    isPlaying = false;
+                } else {
+                    const playPromise = audio.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => {
+                            controlButton.innerHTML = '🔊'; 
+                            isPlaying = true;
+                        })
+                        .catch(error => {
+                            controlButton.innerHTML = '🔇';
+                            isPlaying = false;
+                            console.log("Autoplay bloqueado. Clique para tocar.");
+                        });
+                    }
+                }
+            }
+
+            // Tenta iniciar a música logo que a página carrega
+            togglePlay(); 
+
+            // O clique do usuário sempre aciona o togglePlay
+            controlButton.addEventListener('click', togglePlay);
+        }
+
+        // Chama a função após o carregamento completo da página
+        window.onload = setupAudioControl;
     </script>
 </body>
 </html>
-
